@@ -10,12 +10,14 @@ const provider= new HDWalletProvider(
 const web3 = new Web3(provider);
 
 const deploy = async () => {
+	console.log('going to get accounts');
 	const accounts = await web3.eth.getAccounts();
 	console.log('Attempting to deploy from',accounts[0]);
 	const result = await new web3.eth.Contract(JSON.parse(interface))
 		.deploy({ data:'0x'+bytecode})
 		.send({ gas : '1000000',from : accounts[0],gasPrice: web3.utils.toWei('2', 'gwei') });
 
+	console.log(interface);
 	console.log('Contract deployed to',result.options.address);
 };
 deploy();
