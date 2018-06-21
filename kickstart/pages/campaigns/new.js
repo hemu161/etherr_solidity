@@ -34,7 +34,11 @@ class CampaignNew extends Component {
 		return (
 			<Layout>
 				<h3>Create a Campaign</h3>
-			
+				<Link route={`/campaigns/${this.props.address}/requests`}>
+					<a>
+						Back
+					</a>
+				</Link>
 				<Form onSubmit={this.onSubmit} error={!!this.state.errorMessage}>
 					<Form.Field>
 						<label>Minimum Contribution</label>
